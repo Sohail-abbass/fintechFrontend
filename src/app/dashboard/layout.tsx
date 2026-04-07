@@ -45,8 +45,8 @@ const Header = styled.div`
   align-items: center;
   padding: 0 20px;
   border-bottom: 1px solid #1e293b;
-  border-color: 2px solid red !important;
-  
+  border: 2px solid red !important;
+
 `;
 
 const LogoutBtn = styled.button`

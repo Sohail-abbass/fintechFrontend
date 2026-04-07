@@ -1,6 +1,8 @@
 'use client';
 
 import styled from 'styled-components';
+import { useState } from 'react';
+import DataInputModal from './DataInputModal';
 
 const Grid = styled.div`
   display: grid;
@@ -14,10 +16,22 @@ const Card = styled.div`
   border-radius: 12px;
 `;
 
+const Topmost = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+`;
 export default function DashboardPage() {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
-      <h1>Overview</h1>
+    <Topmost>
+    <h1>Overview</h1>
+      <button onClick={() => setOpen(true)}>+ Add Data</button>
+      {open && <DataInputModal onClose={() => setOpen(false)} />}
+    </Topmost>
 
       <Grid>
         <Card>

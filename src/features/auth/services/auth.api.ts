@@ -1,5 +1,5 @@
-import axios from 'axios';
-
+// import axios from 'axios';
+import { api } from '@/app/baseUrl';
 export type LoginBody = {
   email: string;
   password: string;
@@ -12,14 +12,14 @@ export type AuthTokensResponse = {
   refresh_token: string;
 };
 
-const baseURL =
-  process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001';
+// const baseURL =
+//   process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001';
 
-const api = axios.create({
-  baseURL,
-  headers: { 'Content-Type': 'application/json' },
-  validateStatus: (status) => status < 600,
-});
+// const api = axios.create({
+//   baseURL,
+//  headers: { 'Content-Type': 'application/json' },
+//   validateStatus: (status) => status < 600,
+// }); 
 
 export async function loginUser(body: LoginBody) {
   const res = await api.post<AuthTokensResponse>('/auth/login', body);
