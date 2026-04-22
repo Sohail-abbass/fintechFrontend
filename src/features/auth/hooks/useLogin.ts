@@ -12,12 +12,15 @@ import {
 function persistTokens(res: AxiosResponse<AuthTokensResponse>) {
   const access = res.data?.access_token;
   const refresh = res.data?.refresh_token;
+
   if (!access || !refresh) {
     throw new Error('Invalid response: missing tokens');
   }
+
   setTokens(access, refresh);
 }
 
+// 🔐 LOGIN
 export function useLogin() {
   return useMutation({
     mutationFn: (body: LoginBody) => loginUser(body),
@@ -25,6 +28,7 @@ export function useLogin() {
   });
 }
 
+// 📝 REGISTER
 export function useRegister() {
   return useMutation({
     mutationFn: (body: RegisterBody) => registerUser(body),

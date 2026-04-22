@@ -5,7 +5,7 @@ export async function getCashflow() {
         runOutDate: string;
     }
     try{
-        const res = await api.get<CashflowResponse>('/cashflow');
+        const res = await api.get<CashflowResponse>('/analytics/cashflow');
         return res.data;
     }catch(error){
         console.error('Error fetching cashflow:', error);

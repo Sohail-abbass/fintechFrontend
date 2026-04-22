@@ -7,7 +7,7 @@ export async function getRisk() {
         reason: string;
     }
     try{
-        const res = await api.get<RiskResponse>('/risk');
+        const res = await api.get<RiskResponse>('/analytics/risk');
         return res.data;
     }catch(error){
         console.error('Error fetching risk:', error);

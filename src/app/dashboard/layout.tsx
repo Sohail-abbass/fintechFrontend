@@ -45,7 +45,6 @@ const Header = styled.div`
   align-items: center;
   padding: 0 20px;
   border-bottom: 1px solid #1e293b;
-  border: 2px solid red !important;
 
 `;
 
@@ -83,6 +82,7 @@ export default function DashboardLayout({
     { label: 'Risk Scoring', path: '/dashboard/risk' },
     { label: 'Cash Flow', path: '/dashboard/cashflow' },
     { label: 'Smart Insights', path: '/dashboard/insights' },
+    { label: 'Loan Decision', path: '/dashboard/loan' },
   ];
 
   const logout = () => {
@@ -93,7 +93,7 @@ export default function DashboardLayout({
   return (
     <Wrapper>
       <Sidebar>
-        <Logo>FinTech AI</Logo>
+        <Logo>Risk & Behavior Intelligence System</Logo>
 
         {navItems.map((item) => (
           <NavItem

@@ -6,7 +6,7 @@ export async function getBehavior() {
         score: number;
     }
     try{
-        const res = await api.get<BehaviorResponse>('/behavior');
+        const res = await api.get<BehaviorResponse>('/analytics/behavior');
         return res.data;
     }catch(error){
         console.error('Error fetching behavior:', error);

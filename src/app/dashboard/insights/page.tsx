@@ -2,27 +2,48 @@
 
 import { useEffect, useState } from 'react';
 import { getInsights } from '@/features/auth/services/insight.api';
-export default function InsightsPage() {
-interface Insights {
-    message:string;
+
+interface InsightItem {
+  type: 'warning' | 'advice' | 'insight';
+  message: string;
 }
-  const [data, setData] = useState<Insights | null>(null);
+
+export default function InsightsPage() {
+  const [data, setData] = useState<InsightItem[]>([]);
 
   useEffect(() => {
-    getInsights().then((res) => {
-     setData(res);
-    }).catch((err) => {
-     console.error('Error fetching insights:', err);
-    });
-   }, []);
+    getInsights()
+      .then((res) => {
+        console.log('FRONTEND DATA:', res); // 👈 add this
+        setData(res);
+      })
+      .catch((err) => {
+        console.error('Error fetching insights:', err);
+      });
+  }, []);
 
   if (!data) return <p>Loading...</p>;
-
   return (
     <div>
       <h2>Smart Insights</h2>
 
-        <p>{data.message}</p>
+      {data.map((item, index) => (
+  <div key={index} style={{ marginBottom: '10px' }}>
+    <strong
+      style={{
+        color:
+          item.type === 'warning'
+            ? 'red'
+            : item.type === 'advice'
+            ? 'orange'
+            : 'green',
+      }}
+    >
+      {item.type.toUpperCase()}
+    </strong>
+    <p>{item.message}</p>
+  </div>
+))}
     </div>
   );
 }

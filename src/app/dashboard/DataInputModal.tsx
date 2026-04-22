@@ -4,8 +4,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import ProfileForm from './ProfileForm';
 import TransactionForm from './TransactionForm';
-// import ProfileForm from './ProfileForm';
-// import TransactionForm from './TransactionForm';
+import AssetsForm from './AssetsForm';
 
 const Overlay = styled.div`
   position: fixed;
@@ -31,28 +30,40 @@ const Tab = styled.button<{ active: boolean }>`
   color: white;
   border: none;
   cursor: pointer;
+  border-radius: 6px;
 `;
 
 export default function DataInputModal({ onClose }: { onClose: () => void }) {
-  const [tab, setTab] = useState<'profile' | 'transaction'>('profile');
+  const [tab, setTab] = useState<'profile' | 'transaction' | 'assets'>('profile');
 
   return (
     <Overlay>
       <Modal>
         <h2>Add Financial Data</h2>
 
-        <div>
+        {/* Tabs */}
+        <div style={{ marginBottom: '16px' }}>
           <Tab active={tab === 'profile'} onClick={() => setTab('profile')}>
             Profile
           </Tab>
+
           <Tab active={tab === 'transaction'} onClick={() => setTab('transaction')}>
             Transactions
           </Tab>
+
+          <Tab active={tab === 'assets'} onClick={() => setTab('assets')}>
+            Assets
+          </Tab>
         </div>
 
-        {tab === 'profile' ? <ProfileForm/> : <TransactionForm />}
+        {/* Content */}
+        {tab === 'profile' && <ProfileForm />}
+        {tab === 'transaction' && <TransactionForm />}
+        {tab === 'assets' && <AssetsForm/>}
 
-        <button onClick={onClose}>Close</button>
+        <button onClick={onClose} style={{ marginTop: '16px' }}>
+          Close
+        </button>
       </Modal>
     </Overlay>
   );
