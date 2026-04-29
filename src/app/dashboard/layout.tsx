@@ -19,12 +19,13 @@ const Logo = styled.h2`
   margin-bottom: 30px;
 `;
 
-const NavItem = styled.div<{ active: boolean }>`
+const NavItem = styled.div<{ $active: boolean }>`
   padding: 12px;
   margin-bottom: 8px;
   border-radius: 8px;
   cursor: pointer;
-  background: ${({ active }) => (active ? '#1e293b' : 'transparent')};
+  background: ${({$active }) => ($active ? '#1e293b' : 'transparent')};
+   
 
   &:hover {
     background: #1e293b;
@@ -98,7 +99,9 @@ export default function DashboardLayout({
         {navItems.map((item) => (
           <NavItem
             key={item.path}
-            active={path === item.path}
+            // active={path === item.path}
+            $active={path === item.path}
+
             onClick={() => router.push(item.path)}
           >
             {item.label}

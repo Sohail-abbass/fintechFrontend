@@ -6,8 +6,9 @@ import { useEffect, useState } from 'react';
 import { getCashflow } from '@/features/auth/services/cashflow.api';
 export default function CashflowPage() {
 interface Cashflow {
-    balance:number;
-    runOutDate:string;
+  monthlyBurn:number;
+  runOutDays:string;
+    status: string;
 }
   const [data, setData] = useState<Cashflow | null>(null);
 
@@ -22,8 +23,10 @@ interface Cashflow {
   return (
     <div>
       <h2>Cash Flow Prediction</h2>
-      <p>Predicted Balance: {data.balance}</p>
-      <p>Run-out Date: {data.runOutDate}</p>
+      <p>Monthly Burn: {data.monthlyBurn}</p>
+      <p>Run-out Date: {data.runOutDays}</p>
+      <p>Status: {data.status}</p>
+
 
       
     </div>

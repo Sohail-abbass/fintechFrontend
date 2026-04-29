@@ -4,7 +4,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { api } from '../baseUrl';
 
-export default function ProfileForm() {
+export default function ProfileForm({ onClose }: { onClose: () => void }) {
   const [data, setData] = useState({
     monthlyIncome: '',
     employmentType: 'freelancer',
@@ -64,7 +64,7 @@ export default function ProfileForm() {
           <PrimaryButton onClick={handleSubmit}>
             Save Profile
           </PrimaryButton>
-          <SecondaryButton>Cancel</SecondaryButton>
+          <SecondaryButton onClick={onClose}>Cancel</SecondaryButton>
         </ButtonGroup>
       </Form>
     </Container>

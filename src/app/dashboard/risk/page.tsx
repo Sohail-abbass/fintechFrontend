@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react';
 import { getRisk } from '@/features/auth/services/risk.api';
 export default function RiskPage() {
  interface Risk {
-    level: string;
-    score: number;
-    reason: string;
+    riskLevel: string;
+    loanEligibility: string;
  }
     const [risk, setRisk] = useState<Risk | null>(null);
 
@@ -24,9 +23,8 @@ export default function RiskPage() {
     <div>
       <h2>Risk Scoring</h2>
 
-      <p>Risk Level: {risk.level}</p>
-      <p>Score: {risk.score}</p>
-      <p>Reason: {risk.reason}</p>
+      <p>Risk Level: {risk.riskLevel}</p>
+      <p>Loan Eligibility: {risk.loanEligibility}</p>
     </div>
   );
 }

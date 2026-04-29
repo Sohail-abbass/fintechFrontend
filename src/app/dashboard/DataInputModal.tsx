@@ -35,6 +35,7 @@ const Tab = styled.button<{ active: boolean }>`
 
 export default function DataInputModal({ onClose }: { onClose: () => void }) {
   const [tab, setTab] = useState<'profile' | 'transaction' | 'assets'>('profile');
+const [open, setOpen]= useState(false);
 
   return (
     <Overlay>
@@ -57,7 +58,7 @@ export default function DataInputModal({ onClose }: { onClose: () => void }) {
         </div>
 
         {/* Content */}
-        {tab === 'profile' && <ProfileForm />}
+        {tab === 'profile' && <ProfileForm onClose={()=> setOpen(false)} />}
         {tab === 'transaction' && <TransactionForm />}
         {tab === 'assets' && <AssetsForm/>}
 

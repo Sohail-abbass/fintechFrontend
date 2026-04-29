@@ -6,7 +6,7 @@ export default function BehaviorPage() {
     interface Behavior {
         totalSpend: number;
         topCategory: string;
-        score: number;
+        BehaviorScore: number;
     }
   const [data, setData] = useState<Behavior | null>(null);
 
@@ -24,7 +24,7 @@ export default function BehaviorPage() {
 
       <p>Total Spend: {data.totalSpend}</p>
       <p>Top Category: {data.topCategory}</p>
-      <p>Consistency Score: {data.score}</p>
+      <p>Consistency Score: {data.behaviorScore}</p>
     </div>
   );
 }

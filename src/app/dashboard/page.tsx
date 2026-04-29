@@ -64,7 +64,7 @@ export default function DashboardPage() {
       setData(res);
     });
   }, []);
-
+console.log( "weh sldfsldfs dfasld ",data);
   return (
     <>
       <Topmost>
