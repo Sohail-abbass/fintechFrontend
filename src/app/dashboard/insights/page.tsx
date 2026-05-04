@@ -10,40 +10,43 @@ interface InsightItem {
 
 export default function InsightsPage() {
   const [data, setData] = useState<InsightItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getInsights()
       .then((res) => {
-        console.log('FRONTEND DATA:', res); // 👈 add this
+        console.log('FRONTEND DATA:', res);
         setData(res);
       })
       .catch((err) => {
         console.error('Error fetching insights:', err);
-      });
+      })
+      .finally(() => setLoading(false));
   }, []);
 
-  if (!data) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
+
   return (
     <div>
       <h2>Smart Insights</h2>
 
       {data.map((item, index) => (
-  <div key={index} style={{ marginBottom: '10px' }}>
-    <strong
-      style={{
-        color:
-          item.type === 'warning'
-            ? 'red'
-            : item.type === 'advice'
-            ? 'orange'
-            : 'green',
-      }}
-    >
-      {item.type.toUpperCase()}
-    </strong>
-    <p>{item.message}</p>
-  </div>
-))}
+        <div key={index} style={{ marginBottom: '10px' }}>
+          <strong
+            style={{
+              color:
+                item.type === 'warning'
+                  ? 'red'
+                  : item.type === 'advice'
+                  ? 'orange'
+                  : 'green',
+            }}
+          >
+            {item.type.toUpperCase()}
+          </strong>
+          <p>{item.message}</p>
+        </div>
+      ))}
     </div>
   );
 }

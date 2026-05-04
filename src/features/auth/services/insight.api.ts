@@ -12,5 +12,5 @@ export interface InsightItem {
   
     console.log('RAW:', res.data);
   
-    return res.data?.insights ?? []; // ✅ safe fallback
+  return Array.isArray(res.data) ? res.data : res.data?.insights ?? [];
   }
