@@ -4,7 +4,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { api } from '../baseUrl';
 
-export default function AssetsForm() {
+export default function AssetsForm({ onClose }: { onClose: () => void }) {
   const [data, setData] = useState({
     landValue: '',
     carValue: '',
@@ -85,8 +85,8 @@ export default function AssetsForm() {
         <PrimaryButton onClick={handleSubmit}>
           Save Assets
         </PrimaryButton>
-        <SecondaryButton onClick={handleCancel}>
-          Reset
+        <SecondaryButton onClick={onClose}>
+          Cancel
         </SecondaryButton>
       </ButtonGroup>
     </Container>

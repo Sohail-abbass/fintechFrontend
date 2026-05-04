@@ -4,7 +4,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { api } from '../baseUrl';
 
-export default function TransactionForm() {
+export default function TransactionForm({ onClose }: { onClose: () => void }) {
   const [data, setData] = useState({
     amount: '',
     type: 'debit',
@@ -90,7 +90,7 @@ export default function TransactionForm() {
           <PrimaryButton onClick={handleSubmit}>
             Add Transaction
           </PrimaryButton>
-          <SecondaryButton>Cancel</SecondaryButton>
+          <SecondaryButton onClick={onClose}>Cancel</SecondaryButton>
         </ButtonGroup>
       </Form>
     </Container>
